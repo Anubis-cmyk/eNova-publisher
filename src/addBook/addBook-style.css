@@ -1,9 +1,10 @@
 body{
   overflow: scroll;
+  width: 100%;
 }
 .container {
   display: flex;
-  width: 80%;
+  width: 90%;
   height: fit-content;
   flex-direction: column;
   align-items: center;
@@ -45,9 +46,9 @@ body{
 .form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
+  align-items: space-between;
+  justify-content: space-between;
+  width: 600px;
   padding:  10px 20px 10px 20px;
   margin: 0 auto; 
   background-color: #fff;
@@ -63,16 +64,17 @@ body{
 }
 
 .form input[type="text"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   margin-bottom: 20px;
   border: none;
   border-bottom: 1px solid #ccc;
   font-size: 16px;
+  margin-right: 10px;
 }
 
 .form textarea {
-  width: 100%;
+  width: 90%;
   height: 150px;
   padding: 10px;
   margin-bottom: 20px;
@@ -101,43 +103,66 @@ body{
   grid-gap: 10px; 
   padding: auto auto;
   overflow: scroll;
+  min-height: 500px;
+}
+.loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #69129c71;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  transition: all 0.3s ease-in-out;
+  flex-direction: column;
+}
+.loading-text-heading{
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #fff;
+  text-shadow: #b1b1b1 8px 0px 10px;
+}
+.loading-text{
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 0px;
+  color: #fff;
+  text-shadow: #b1b1b1 8px 0px 10px;
 }
 
 .book {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  padding: 20px;
-  width: 100px;
-  height: 200px;
+  width: 200px;
+  height: 250px;
+  padding-bottom: 10px;
+  background-image: url('../asset/64af897d88844ba12e08ddbc92956b6c.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 20px;
+  margin-left: 3%;
 }
 
 .book h2 {
   font-size: 24px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
+  margin-right: 8px;
 }
 
 .book p {
   font-size: 18px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  margin-right: 8px;
 }
-
-.book button {
-  background-color: #0070f3;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.book button:hover {
-  background-color: #0054b4;
-}
+ 
 .bottom-part{
   display: flex;
   flex-direction: row;
@@ -147,4 +172,62 @@ body{
 .publications{
   margin-left: 3%;
   margin-right: 3%;
+  width: 60%;
+  min-height: 500px;
+}
+.btn-row{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end;
+  align-items: center; 
+}
+.edit-btn{ 
+  color: #fff;
+  background-color: #cccccc00;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  padding: 5px 8px; 
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-top: 3px;
+
+}
+.delete-btn{
+  background-color: #cccccc00;
+  color: #fa614c;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 3px;
+  margin-top: 3px;
+  border: 1px solid #fa614c;
+  border-radius: 8px;
+  padding: 5px 8px; 
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.edit-img{
+  width: 20px;
+  height: 20px;
+}
+.book-top{
+  width: 100%;
+  height: 100%;
+  background-color: #fdfdfde1;
+}
+.book-data{
+  width: 100%;
+  height: 100%;
+  padding-left: 10px ;
 }
