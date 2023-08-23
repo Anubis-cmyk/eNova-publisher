@@ -1,1 +1,1 @@
-export const APPURL = "http://localhost:8070";
+export const APPURL = "https://enova-web2.onrender.com";
