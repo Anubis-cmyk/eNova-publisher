@@ -1,14 +1,67 @@
 import React, { useEffect, useState } from 'react' 
 import './login-style.css';
 import {useNavigate} from "react-router-dom"
+import axios from 'axios'
+import { APPURL } from '../constant/const';
+import { on } from 'stream';
 
 const Metamask = () => {
   // set states to hold wallet account details
   const [userAccount, setUserAccount] = useState() 
-
+  const [user, setUser] = useState({})
   const navigate = useNavigate();
+  
+  const onChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    console.log(name, value);
+    setUser({ ...user, [name]: value });
+  }
+
+  const login = async (e) => {
+    e.preventDefault();
+    const { email, password } = user;
+    const data = { email, password };
+    const response = await axios.post(`${APPURL}/user/login`, data).then((res) => {
+      console.log(res.data[0]);
+      localStorage.setItem('user', res.data);
+      navigate('/addBook',
+      {
+        state: {
+          "service": "web2",
+          "account" : res.data[0]
+        }
+      });
+    }
+    ).catch((err) => {
+      console.log(err);
+    }
+    );
+  }
+
+  const register = async (e) => {
+    e.preventDefault();
+    const { email, password } = user;
+    const data = { email, password };
+    const response = await axios.post(`${APPURL}/user/addUser`, data).then((res) => {
+      console.log(res.data);
+      localStorage.setItem('user', res.data);
+      navigate('/addBook',
+      {
+        state: {
+          "service": "web2",
+          "account" : res.data 
+        }
+      });
+    }).catch((err) => {
+      console.log(err);
+    }
+    );
+  }
+  
+
   //  initialize and check if the ethereum blockchain is defined, the assign
-  let eth
+  let eth;
 
   if (typeof window !== 'undefined'){
     eth = window.ethereum
@@ -26,7 +79,8 @@ const Metamask = () => {
       navigate('./addBook',
             {
               state: {
-               "metaMaskAddress" : acc
+                "service": "web3",
+                "account" : acc
               }
             })
             
@@ -86,10 +140,70 @@ const Metamask = () => {
                       { 
                       userAccount ?
                        <>
-                          <button className='continue-button' onClick={() => connectWallet()}>Continue</button>
+                        <div>
+                        <p className='login-text'>Login with Email</p>
+                        <form className='form'>
+                            <div>
+                              <label htmlFor="email">E-mail:</label>
+                              <input
+                                type="email"
+                                id="email" 
+                                name="email"
+                                onChange={(e) => {onChange(e)}}
+                                required
+                              />
+                            </div>
+                            <div className=''>
+                              <label htmlFor="password">Password:</label>
+                              <input
+                                type="password"
+                                id="password" 
+                                name="password" 
+                                onChange={(e) => {onChange(e)}}
+                                required
+                              />
+                            </div>
+                            
+                            <button type='button' className=" login-btn-primary" onClick={login}>Login</button>
+                            <button type='button' className=" login-btn-secondary" onClick={register}>Register</button>
+                          </form> 
+                          <p className='login-text center-text'>Or</p>
+                          <button className='continue-button' onClick={() => connectWallet()}>Continue with MetaMask</button>
+                        </div>
                         </>
                         : 
-                      <button className='login-button' onClick={() => connectWallet()}>connect wallet</button>
+                     <>
+                        <div>
+                          <p className='login-text'>Login to continue</p>
+                          <form className='form'>
+                            <div>
+                              <label htmlFor="email">E-mail:</label>
+                              <input
+                                type="text"
+                                id="email" 
+                                name="email"
+                                onChange={(e) => {}}
+                                required
+                              />
+                            </div>
+                            <div className=''>
+                              <label htmlFor="password">Password:</label>
+                              <input
+                                type="text"
+                                id="password" 
+                                name="password" 
+                                onChange={(e) => {}}
+                                required
+                              />
+                            </div>
+                            
+                            <button type='button' className=" login-btn-primary" onClick={login}>Login</button>
+                            <button type='button' className=" login-btn-secondary" onClick={register}>Register</button>
+                          </form> 
+                          <p className='login-text'>Login with Metamask</p>
+                         <button className='login-button' onClick={() => connectWallet()}>connect wallet</button>
+                        </div>
+                     </>
                   }
                   </div>
                   </div>

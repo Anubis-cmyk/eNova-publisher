@@ -1,17 +1,16 @@
-body{
-  overflow: hidden; 
-}
-.login-container{   
-  height: 80vh;
+ .login-container{   
+  height: 90vh;
   width:40%; 
   margin: 3% 20% 10% 20%;
   padding: 0;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column; 
+  background-color: #fff;
   justify-content: flex-start;
   align-items: center;  
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.575);
-  overflow: hidden;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.575); 
 }
 
 .top-container{  
@@ -27,12 +26,16 @@ body{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  backdrop-filter: blur(10.9px);
+  -webkit-backdrop-filter: blur(10.9px);
   position: absolute;   
 } 
 
 .overlay{
-  background-color: rgba(102, 33, 134, 0.884);
-  width: 100%;
+  background-color: rgba(102, 33, 134, 0.712);
+  width: 100%; 
+  backdrop-filter: blur(1.9px);
+  -webkit-backdrop-filter: blur(10.9px);
   height: 100%;
   position: absolute;
   z-index: 1;
@@ -47,8 +50,7 @@ body{
   padding: 0 20px;
   z-index: 2;
   color: antiquewhite;
-  font-family: Arial, Helvetica, sans-serif;
-  transform: rotateZ(-19.8deg);
+  font-family: Arial, Helvetica, sans-serif; 
   margin-bottom: 25%; 
 }
 .content p{
@@ -66,45 +68,68 @@ body{
   margin-bottom: 10;
   padding: 0;
 }
-.bottom-container{
-  width: 70vw;
+.bottom-container{ 
+  width: 100%;
   height: 50%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start; 
-  background-color: rgb(255, 255, 255);
+  margin-right: 10%;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;  
   overflow: hidden;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.575);
+   
 }
-.bottom-rotation{
-  background-image:linear-gradient(to top right,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255));
-  width: 50vw; 
-  height: 45%;
+.bottom-rotation{  
+  height: 60%;
+  width: 28%;
+  border-radius: 8px;
+  padding: 0.25% 2%;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.575);
   margin-left: 5%;
+  background-color: #ffffffd0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center; 
-  overflow: hidden;
+  overflow: hidden; 
+  z-index: 3; 
   position: absolute;
-  z-index: 3;
-  top: 40%;
-  transform: skewY(-20deg);
+  animation: zoom 1s  ;
+  bottom: 10%; 
 }
-.bottom-content{
-   
-  width: 87%;
+.bottom-content{ 
+  margin-right: 7%;
   height: 50%;
   margin-top: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  transform: skewY(20deg);
+  align-items: flex-start; 
   
 }
+@keyframes zoom {
+  0% {
+    transform: scale(0.5,0.5);
+    opacity: 0.5; 
+  }
+  100% {
+    transform: scale(1,1);
+    opacity: 1;
+  }
+}
+.bottom-content P{
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 5%;
+  margin: 0;
+  margin-bottom: 10px;
+   padding: 0;
+  font-family: 'arial', sans-serif;
+  text-shadow:  0 10px rgba(238, 238, 238, 0.1);
+}
 .login-button{
-  width: 50%;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
   height: 50px;
   background-color: rgb(41, 139, 93);
   color: rgb(255, 255, 255);
@@ -116,8 +141,44 @@ body{
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+.center-text{
+  text-align: center;
+  font-size: 1.2rem;
+}
 .continue-button{
-  width: 50%;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  height:40px;
+  padding: 10px 0;
+  background-color: rgb(136, 41, 139);
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.form{
+  width: 450px;
+}
+.login-btn-secondary{
+  width: 100%;
+  height: 50px;
+  background-color: rgb(41, 75, 139);
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-btn-primary{
+  width: 100%;
   height: 50px;
   background-color: rgb(136, 41, 139);
   color: rgb(255, 255, 255);
@@ -128,4 +189,13 @@ body{
   margin-top: 10px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+}
+.form{
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  padding-bottom: 20px;
+}
+.form input{
+  background-color: #ffffff1c;
 }
