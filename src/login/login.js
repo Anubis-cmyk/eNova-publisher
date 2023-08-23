@@ -20,43 +20,51 @@ const Metamask = () => {
 
   const login = async (e) => {
     e.preventDefault();
-    const { email, password } = user;
-    const data = { email, password };
-    const response = await axios.post(`${APPURL}/user/login`, data).then((res) => {
-      console.log(res.data[0]);
-      localStorage.setItem('user', res.data);
-      navigate('/addBook',
-      {
-        state: {
-          "service": "web2",
-          "account" : res.data[0]
-        }
-      });
+    if (!user.email || !user.password) {
+      alert('please fill all fields')
+    }else{
+      const { email, password } = user;
+      const data = { email, password };
+      const response = await axios.post(`${APPURL}/user/login`, data).then((res) => {
+        console.log(res.data[0]);
+        localStorage.setItem('user', res.data);
+        navigate('/addBook',
+        {
+          state: {
+            "service": "web2",
+            "account" : res.data[0]
+          }
+        });
+      }
+      ).catch((err) => {
+        console.log(err);
+      }
+      );
     }
-    ).catch((err) => {
-      console.log(err);
-    }
-    );
   }
 
   const register = async (e) => {
     e.preventDefault();
-    const { email, password } = user;
-    const data = { email, password };
-    const response = await axios.post(`${APPURL}/user/addUser`, data).then((res) => {
-      console.log(res.data);
-      localStorage.setItem('user', res.data);
-      navigate('/addBook',
-      {
-        state: {
-          "service": "web2",
-          "account" : res.data 
-        }
-      });
-    }).catch((err) => {
-      console.log(err);
+    if (!user.email || !user.password) {
+      alert('please fill all fields')
+    }else{
+      const { email, password } = user;
+      const data = { email, password };
+      const response = await axios.post(`${APPURL}/user/addUser`, data).then((res) => {
+        console.log(res.data);
+        localStorage.setItem('user', res.data);
+        navigate('/addBook',
+        {
+          state: {
+            "service": "web2",
+            "account" : res.data 
+          }
+        });
+      }).catch((err) => {
+        console.log(err);
+      }
+      );
     }
-    );
   }
   
 

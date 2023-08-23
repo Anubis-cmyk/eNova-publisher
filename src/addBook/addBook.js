@@ -3,10 +3,7 @@ import './addBook-style.css';
 import initWeb3 from '../web3/connector';
 import Web3 from 'web3';
 import contractABI from '../ABI/abi.json'; 
-import { json, useLocation,useNavigate } from 'react-router-dom';
-import { useWeb3React } from '@web3-react/core';
-import { ethers } from 'ethers';
-import { InfuraProvider } from '@ethersproject/providers';
+import {useLocation,useNavigate } from 'react-router-dom'; 
 import ClockLoader from "react-spinners/ClockLoader";
 import GridLoader from "react-spinners/GridLoader";
 import sampleBookCover from '../asset/book-cover-placeholder.png'
